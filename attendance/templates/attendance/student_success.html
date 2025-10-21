@@ -1,0 +1,7 @@
+{% extends "attendance/base.html" %}
+{% block title %}Student registered{% endblock %}
+{% block content %}
+  <div class="alert alert-success">Student registered successfully.</div>
+  <p><a class="btn btn-secondary" href="{% url 'attendance:student_create' %}">Register another student</a></p>
+  <p><a class="btn btn-link" href="{% url 'attendance:student_list' %}">Back to students</a></p>
+{% endblock %}

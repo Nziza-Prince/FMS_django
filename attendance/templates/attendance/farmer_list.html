@@ -1,0 +1,13 @@
+{% extends "attendance/base.html" %}
+{% block title %}Farmers{% endblock %}
+{% block content %}
+  <h1>Farmers</h1>
+  <a class="btn btn-primary mb-3" href="{% url 'attendance:farmer_create' %}">Register new farmer</a>
+  <ul class="list-group">
+    {% for f in farmers %}
+      <li class="list-group-item">{{ f.name }} - {{ f.farm }} {% if f.email %}({{ f.email }}){% endif %}</li>
+    {% empty %}
+      <li class="list-group-item">No farmers yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

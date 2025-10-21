@@ -1,0 +1,7 @@
+{% extends "attendance/base.html" %}
+{% block title %}Farmer registered{% endblock %}
+{% block content %}
+  <div class="alert alert-success">Farmer registered successfully.</div>
+  <p><a class="btn btn-secondary" href="{% url 'attendance:farmer_create' %}">Register another farmer</a></p>
+  <p><a class="btn btn-link" href="{% url 'attendance:farmer_list' %}">Back to farmers</a></p>
+{% endblock %}

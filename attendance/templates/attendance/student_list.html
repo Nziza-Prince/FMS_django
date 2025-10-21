@@ -1,0 +1,13 @@
+{% extends "attendance/base.html" %}
+{% block title %}Students{% endblock %}
+{% block content %}
+  <h1>Students</h1>
+  <a class="btn btn-primary mb-3" href="{% url 'attendance:student_create' %}">Register new student</a>
+  <ul class="list-group">
+    {% for s in students %}
+      <li class="list-group-item">{{ s.name }}{% if s.school %} - {{ s.school }}{% endif %} {% if s.email %}({{ s.email }}){% endif %}</li>
+    {% empty %}
+      <li class="list-group-item">No students yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
