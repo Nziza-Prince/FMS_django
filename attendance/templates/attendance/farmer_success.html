@@ -1,7 +1,17 @@
 {% extends "attendance/base.html" %}
-{% block title %}Farmer registered{% endblock %}
+{% block title %}Farmer Registered Successfully - Farm Management System{% endblock %}
 {% block content %}
-  <div class="alert alert-success">Farmer registered successfully.</div>
-  <p><a class="btn btn-secondary" href="{% url 'attendance:farmer_create' %}">Register another farmer</a></p>
-  <p><a class="btn btn-link" href="{% url 'attendance:farmer_list' %}">Back to farmers</a></p>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="alert alert-success text-center">
+        <h4 class="alert-heading">Farmer Registered Successfully!</h4>
+        <p>The farmer has been successfully added to the system.</p>
+        <hr>
+        <div class="d-flex justify-content-center gap-2">
+          <a class="btn btn-success" href="{% url 'attendance:farmer_create' %}">Register Another Farmer</a>
+          <a class="btn btn-primary" href="{% url 'attendance:farmer_list' %}">View All Farmers</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -1,14 +1,66 @@
 {% extends "attendance/base.html" %}
-{% block title %}Register farmer{% endblock %}
+{% block title %}Register Farmer - Farm Management System{% endblock %}
 {% block content %}
-  <div class="card">
-    <div class="card-body">
-      <h1 class="card-title">Register Farmer</h1>
-      <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </form>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Register New Farmer</h2>
+    <a href="{% url 'attendance:farmer_list' %}" class="btn btn-outline-secondary">Back to Farmers</a>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Farmer Information</h5>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            
+            {% for field in form %}
+              <div class="mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label">
+                  {{ field.label }}
+                  {% if field.field.required %}
+                    <span class="text-danger">*</span>
+                  {% endif %}
+                </label>
+                
+                {% if field.name == 'gender' %}
+                  <div class="mt-2">
+                    {% for choice in field %}
+                      <div class="form-check">
+                        {{ choice.tag }}
+                        <label class="form-check-label" for="{{ choice.id_for_label }}">
+                          {{ choice.choice_label }}
+                        </label>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ field }}
+                {% endif %}
+                
+                {% if field.errors %}
+                  <div class="text-danger small">
+                    {% for error in field.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                
+                {% if field.help_text %}
+                  <div class="form-text">{{ field.help_text }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+            
+            <div class="d-flex justify-content-end gap-2">
+              <a href="{% url 'attendance:farmer_list' %}" class="btn btn-secondary">Cancel</a>
+              <button class="btn btn-primary" type="submit">Register Farmer</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}
