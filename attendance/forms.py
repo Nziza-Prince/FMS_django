@@ -9,8 +9,12 @@ class FarmerForm(forms.ModelForm):
 
 	class Meta:
 		model = Farmer
-		fields = ["name", "farm", "age", "address", "phone_number", "email"]
-		widgets = {"address": forms.Textarea(attrs={"rows": 2})}
+		fields = ["name", "farm", "age", "address", "phone_number", "email", "gender", "worker_type"]
+		widgets = {
+			"address": forms.Textarea(attrs={"rows": 2}),
+			"gender": forms.RadioSelect,
+			"worker_type": forms.RadioSelect,
+		}
 
 
 class StudentModelForm(forms.ModelForm):
