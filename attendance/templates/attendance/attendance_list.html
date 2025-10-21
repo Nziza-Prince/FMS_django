@@ -7,7 +7,7 @@
   </div>
 
   <!-- Filter Options -->
-  <!-- <div class="card mb-4">
+  <div class="card mb-4">
     <div class="card-body">
       <h6 class="card-title">Filter Options</h6>
       <div class="row">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   {% if attendance_by_date %}
     {% for date, attendances in attendance_by_date.items %}
@@ -95,7 +95,7 @@
   {% endif %}
 
   <!-- Summary Statistics -->
-  <!-- {% if attendance_by_date %}
+  {% if attendance_by_date %}
     <div class="card mt-4">
       <div class="card-header">
         <h6 class="mb-0">Summary Statistics</h6>
@@ -123,5 +123,5 @@
         </div>
       </div>
     </div>
-  {% endif %} -->
+  {% endif %}
 {% endblock %}

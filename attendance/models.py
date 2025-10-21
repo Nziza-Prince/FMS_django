@@ -3,12 +3,25 @@ from django.utils import timezone
 
 # Create your models here.
 class Farmer(models.Model):
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Other'),
+    ]
+    
+    WORKER_TYPE_CHOICES = [
+        ('casual', 'Casual Worker (Wage)'),
+        ('contract', 'Contract Worker'),
+    ]
+    
     name = models.CharField(max_length=50)
     farm = models.CharField(max_length=100)
     age = models.IntegerField()
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
+    worker_type = models.CharField(max_length=10, choices=WORKER_TYPE_CHOICES, default='casual')
     
     class Meta:
         db_table = 'farmer'
